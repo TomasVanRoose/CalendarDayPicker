@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C33DC7101D2BC32200A524B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DC70F1D2BC32200A524B0 /* AppDelegate.swift */; };
+		C33DC7121D2BC32200A524B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DC7111D2BC32200A524B0 /* ViewController.swift */; };
+		C33DC7151D2BC32200A524B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C33DC7131D2BC32200A524B0 /* Main.storyboard */; };
+		C33DC7171D2BC32200A524B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33DC7161D2BC32200A524B0 /* Assets.xcassets */; };
+		C33DC71A1D2BC32200A524B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C33DC7181D2BC32200A524B0 /* LaunchScreen.storyboard */; };
+		C33DC7251D2BC32200A524B0 /* CalendarDayPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DC7241D2BC32200A524B0 /* CalendarDayPickerTests.swift */; };
+		C33DC7301D2BC32200A524B0 /* CalendarDayPickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DC72F1D2BC32200A524B0 /* CalendarDayPickerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C33DC7211D2BC32200A524B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C33DC7041D2BC32100A524B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C33DC70B1D2BC32100A524B0;
+			remoteInfo = CalendarDayPicker;
+		};
+		C33DC72C1D2BC32200A524B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C33DC7041D2BC32100A524B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C33DC70B1D2BC32100A524B0;
+			remoteInfo = CalendarDayPicker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C33DC70C1D2BC32200A524B0 /* CalendarDayPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarDayPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33DC70F1D2BC32200A524B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C33DC7111D2BC32200A524B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C33DC7141D2BC32200A524B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C33DC7161D2BC32200A524B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C33DC7191D2BC32200A524B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C33DC71B1D2BC32200A524B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C33DC7201D2BC32200A524B0 /* CalendarDayPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarDayPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33DC7241D2BC32200A524B0 /* CalendarDayPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayPickerTests.swift; sourceTree = "<group>"; };
+		C33DC7261D2BC32200A524B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C33DC72B1D2BC32200A524B0 /* CalendarDayPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarDayPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33DC72F1D2BC32200A524B0 /* CalendarDayPickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayPickerUITests.swift; sourceTree = "<group>"; };
+		C33DC7311D2BC32200A524B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C33DC7091D2BC32100A524B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C33DC71D1D2BC32200A524B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C33DC7281D2BC32200A524B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C33DC7031D2BC32100A524B0 = {
+			isa = PBXGroup;
+			children = (
+				C33DC70E1D2BC32200A524B0 /* CalendarDayPicker */,
+				C33DC7231D2BC32200A524B0 /* CalendarDayPickerTests */,
+				C33DC72E1D2BC32200A524B0 /* CalendarDayPickerUITests */,
+				C33DC70D1D2BC32200A524B0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C33DC70D1D2BC32200A524B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C33DC70C1D2BC32200A524B0 /* CalendarDayPicker.app */,
+				C33DC7201D2BC32200A524B0 /* CalendarDayPickerTests.xctest */,
+				C33DC72B1D2BC32200A524B0 /* CalendarDayPickerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C33DC70E1D2BC32200A524B0 /* CalendarDayPicker */ = {
+			isa = PBXGroup;
+			children = (
+				C33DC70F1D2BC32200A524B0 /* AppDelegate.swift */,
+				C33DC7111D2BC32200A524B0 /* ViewController.swift */,
+				C33DC7131D2BC32200A524B0 /* Main.storyboard */,
+				C33DC7161D2BC32200A524B0 /* Assets.xcassets */,
+				C33DC7181D2BC32200A524B0 /* LaunchScreen.storyboard */,
+				C33DC71B1D2BC32200A524B0 /* Info.plist */,
+			);
+			path = CalendarDayPicker;
+			sourceTree = "<group>";
+		};
+		C33DC7231D2BC32200A524B0 /* CalendarDayPickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C33DC7241D2BC32200A524B0 /* CalendarDayPickerTests.swift */,
+				C33DC7261D2BC32200A524B0 /* Info.plist */,
+			);
+			path = CalendarDayPickerTests;
+			sourceTree = "<group>";
+		};
+		C33DC72E1D2BC32200A524B0 /* CalendarDayPickerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C33DC72F1D2BC32200A524B0 /* CalendarDayPickerUITests.swift */,
+				C33DC7311D2BC32200A524B0 /* Info.plist */,
+			);
+			path = CalendarDayPickerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C33DC70B1D2BC32100A524B0 /* CalendarDayPicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C33DC7341D2BC32200A524B0 /* Build configuration list for PBXNativeTarget "CalendarDayPicker" */;
+			buildPhases = (
+				C33DC7081D2BC32100A524B0 /* Sources */,
+				C33DC7091D2BC32100A524B0 /* Frameworks */,
+				C33DC70A1D2BC32100A524B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalendarDayPicker;
+			productName = CalendarDayPicker;
+			productReference = C33DC70C1D2BC32200A524B0 /* CalendarDayPicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C33DC71F1D2BC32200A524B0 /* CalendarDayPickerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C33DC7371D2BC32200A524B0 /* Build configuration list for PBXNativeTarget "CalendarDayPickerTests" */;
+			buildPhases = (
+				C33DC71C1D2BC32200A524B0 /* Sources */,
+				C33DC71D1D2BC32200A524B0 /* Frameworks */,
+				C33DC71E1D2BC32200A524B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C33DC7221D2BC32200A524B0 /* PBXTargetDependency */,
+			);
+			name = CalendarDayPickerTests;
+			productName = CalendarDayPickerTests;
+			productReference = C33DC7201D2BC32200A524B0 /* CalendarDayPickerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C33DC72A1D2BC32200A524B0 /* CalendarDayPickerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C33DC73A1D2BC32200A524B0 /* Build configuration list for PBXNativeTarget "CalendarDayPickerUITests" */;
+			buildPhases = (
+				C33DC7271D2BC32200A524B0 /* Sources */,
+				C33DC7281D2BC32200A524B0 /* Frameworks */,
+				C33DC7291D2BC32200A524B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C33DC72D1D2BC32200A524B0 /* PBXTargetDependency */,
+			);
+			name = CalendarDayPickerUITests;
+			productName = CalendarDayPickerUITests;
+			productReference = C33DC72B1D2BC32200A524B0 /* CalendarDayPickerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C33DC7041D2BC32100A524B0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Tomas Van Roose";
+				TargetAttributes = {
+					C33DC70B1D2BC32100A524B0 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					C33DC71F1D2BC32200A524B0 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = C33DC70B1D2BC32100A524B0;
+					};
+					C33DC72A1D2BC32200A524B0 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = C33DC70B1D2BC32100A524B0;
+					};
+				};
+			};
+			buildConfigurationList = C33DC7071D2BC32100A524B0 /* Build configuration list for PBXProject "CalendarDayPicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C33DC7031D2BC32100A524B0;
+			productRefGroup = C33DC70D1D2BC32200A524B0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C33DC70B1D2BC32100A524B0 /* CalendarDayPicker */,
+				C33DC71F1D2BC32200A524B0 /* CalendarDayPickerTests */,
+				C33DC72A1D2BC32200A524B0 /* CalendarDayPickerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C33DC70A1D2BC32100A524B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C33DC71A1D2BC32200A524B0 /* LaunchScreen.storyboard in Resources */,
+				C33DC7171D2BC32200A524B0 /* Assets.xcassets in Resources */,
+				C33DC7151D2BC32200A524B0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C33DC71E1D2BC32200A524B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C33DC7291D2BC32200A524B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C33DC7081D2BC32100A524B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C33DC7121D2BC32200A524B0 /* ViewController.swift in Sources */,
+				C33DC7101D2BC32200A524B0 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C33DC71C1D2BC32200A524B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C33DC7251D2BC32200A524B0 /* CalendarDayPickerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C33DC7271D2BC32200A524B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C33DC7301D2BC32200A524B0 /* CalendarDayPickerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C33DC7221D2BC32200A524B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C33DC70B1D2BC32100A524B0 /* CalendarDayPicker */;
+			targetProxy = C33DC7211D2BC32200A524B0 /* PBXContainerItemProxy */;
+		};
+		C33DC72D1D2BC32200A524B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C33DC70B1D2BC32100A524B0 /* CalendarDayPicker */;
+			targetProxy = C33DC72C1D2BC32200A524B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C33DC7131D2BC32200A524B0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C33DC7141D2BC32200A524B0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C33DC7181D2BC32200A524B0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C33DC7191D2BC32200A524B0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C33DC7321D2BC32200A524B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C33DC7331D2BC32200A524B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C33DC7351D2BC32200A524B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CalendarDayPicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C33DC7361D2BC32200A524B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CalendarDayPicker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPicker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C33DC7381D2BC32200A524B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CalendarDayPickerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarDayPicker.app/CalendarDayPicker";
+			};
+			name = Debug;
+		};
+		C33DC7391D2BC32200A524B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CalendarDayPickerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarDayPicker.app/CalendarDayPicker";
+			};
+			name = Release;
+		};
+		C33DC73B1D2BC32200A524B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CalendarDayPickerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPickerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CalendarDayPicker;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		C33DC73C1D2BC32200A524B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CalendarDayPickerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPickerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CalendarDayPicker;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C33DC7071D2BC32100A524B0 /* Build configuration list for PBXProject "CalendarDayPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C33DC7321D2BC32200A524B0 /* Debug */,
+				C33DC7331D2BC32200A524B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C33DC7341D2BC32200A524B0 /* Build configuration list for PBXNativeTarget "CalendarDayPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C33DC7351D2BC32200A524B0 /* Debug */,
+				C33DC7361D2BC32200A524B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C33DC7371D2BC32200A524B0 /* Build configuration list for PBXNativeTarget "CalendarDayPickerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C33DC7381D2BC32200A524B0 /* Debug */,
+				C33DC7391D2BC32200A524B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C33DC73A1D2BC32200A524B0 /* Build configuration list for PBXNativeTarget "CalendarDayPickerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C33DC73B1D2BC32200A524B0 /* Debug */,
+				C33DC73C1D2BC32200A524B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C33DC7041D2BC32100A524B0 /* Project object */;
+}
