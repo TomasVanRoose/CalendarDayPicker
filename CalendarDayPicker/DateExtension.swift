@@ -59,6 +59,14 @@ extension Date {
         
     }
     
+    func year() -> Int {
+        return Calendar.current().component(.year, from: self)
+    }
+    
+    func month() -> Int {
+        return Calendar.current().component(.month, from: self)
+    }
+    
     func weekday() -> Int {
         let weekday = Calendar.current().component(.weekday, from: self)
         

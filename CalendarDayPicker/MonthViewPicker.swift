@@ -11,7 +11,7 @@ import UIKit
 // MonthViewPickerDelegate
 // Notifies when date was selected
 protocol MonthViewPickerDelegate: class {
-    func didSelectDate(date: NSDate)
+    func didSelectDate(date: Date)
 }
 
 
@@ -19,14 +19,17 @@ class MonthViewPicker: UIView {
 
     let labelHeight = 25
     let labelWidth = 25
-    let padding = 5
+    let padding = 8
+    
+    var month = 0
+    var year = 0
     
     weak var delegate : MonthViewPickerDelegate?
     
     
     /* Public Functions */
     
-    func selectDate(date: NSDate) -> Bool {
+    func selectDate(date: Date) -> Bool {
         
         // TODO //
         
@@ -42,11 +45,14 @@ class MonthViewPicker: UIView {
         
         super.init(frame: CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: 200))
         
-        // Draw name of the month -> TODO
-        let month = date.localMonth()
+        month = date.month()
+        year = date.year()
+        
+        // Draw name of the month
+        let monthName = date.localMonth()
         
         let monthNameLabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: totalWidth, height: 30))
-        monthNameLabel.text = month
+        monthNameLabel.text = monthName
         
         self.addSubview(monthNameLabel)
         verticalOffset += Int(monthNameLabel.frame.size.height) + padding
@@ -90,11 +96,26 @@ class MonthViewPicker: UIView {
         self.frame = CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: CGFloat(y + labelHeight))
         
     }
+
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func labelTapped(sender: UITapGestureRecognizer) {
+        let tag = sender.view!.tag
+        
+        let calendar = Calendar.current()
+        var components = DateComponents()
+        components.day = tag
+        components.month = month
+        components.year = year
+        
+        components.to12pm()
+        
+        let date = calendar.date(from: components)!
+        
+        delegate!.didSelectDate(date: date)
+        
+        print(date)
+        
     }
-    
 
     
     // Factory for the labels of the names of the weekdays
@@ -117,9 +138,15 @@ class MonthViewPicker: UIView {
         label.tag = number
         label.textAlignment = .center
         
-        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(MonthViewPicker.labelTapped(sender:)))
+        label.addGestureRecognizer(gesture)
         
         return label
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }
