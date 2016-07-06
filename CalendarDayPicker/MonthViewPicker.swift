@@ -38,7 +38,7 @@ class MonthViewPicker: UIView {
         
         let totalWidth = CGFloat(7 * (labelWidth + padding) - padding)
         
-        super.init(frame: CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: 100))
+        super.init(frame: CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: 200))
         
         // Draw name of the month -> TODO
         
@@ -53,9 +53,28 @@ class MonthViewPicker: UIView {
         }
         
         // Get first day of the month
+        let firstDayOfMonth = date.firstDayOfMonth()!
         
-        // See what weekday it is on
+        var day = firstDayOfMonth
         
+        // If first day of the month is not on a monday then weekofthemonth equals 0, but for placement we want all firsts to be in week 1
+        var offset = 0
+        if day.weekOfMonth() == 0 { offset = 1 }
+        
+        while day.compareMonths(date: firstDayOfMonth) == ComparisonResult.orderedSame {
+            
+            // Weekday range is 1...7, because we want to start the x-coordinate at 0, we subtract
+            let x = (day.weekday() - 1) * (labelWidth + padding)
+            // Use offset so first week starts at 0
+            let y = (day.weekOfMonth() - 1 + offset) * labelHeight
+            
+            let origin = CGPoint.init(x: x, y: y)
+            let label = makeDayLabel(number: day.monthday(), origin: origin)
+            
+            self.addSubview(label)
+            
+            day = day.nextDay()
+        }
        
         
     }
@@ -66,10 +85,10 @@ class MonthViewPicker: UIView {
     
 
     
-    
+    // Factory for the labels of the names of the weekdays
     func makeStringLabel(text: String, origin: CGPoint) -> UILabel {
         
-        let label = UILabel.init(frame: CGRect.init(x: origin.x, y: origin.y, width: CGFloat(labelWidth), height: CGFloat(labelHeight)));
+        let label = UILabel.init(frame: CGRect.init(x: origin.x, y: origin.y, width: CGFloat(labelWidth), height: CGFloat(labelHeight)))
     
         label.text = text
         label.textAlignment = .center
@@ -77,10 +96,18 @@ class MonthViewPicker: UIView {
         return label
     }
     
-    //func makeDayLabel(number: Int, origin: CGPoint) -> UILabel {
+    // Factory for the labels of the weekdays
+    func makeDayLabel(number: Int, origin: CGPoint) -> UILabel {
+        
+        let label = UILabel.init(frame: CGRect.init(x: origin.x, y: origin.y, width: CGFloat(labelWidth), height: CGFloat(labelHeight)))
+        
+        label.text = String(number)
+        label.tag = number
+        label.textAlignment = .center
         
         
         
-    //}
+        return label
+    }
 
 }

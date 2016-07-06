@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let view = MonthViewPicker.init(origin: CGPoint.init(x: 20, y: 20), date: Date())
+        let view = MonthViewPicker.init(origin: CGPoint.init(x: 20, y: 20), date: Date.init(timeInterval: 60*60*24*31, since: Date()))
         
         //developer
         view.backgroundColor = UIColor.red().withAlphaComponent(0.6)

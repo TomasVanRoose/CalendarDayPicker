@@ -39,5 +39,36 @@ extension Date {
         return cal.date(from: comp)!
     }
     
+    func nextDay() -> Date {
+        
+        var dayComponent = DateComponents.init()
+        dayComponent.day = 1;
+        let calendar = Calendar.current()
+        
+        return calendar.date(byAdding: dayComponent, to: self, options: Calendar.Options(rawValue: UInt(0)))!
+        
+    }
+    
+    func weekday() -> Int {
+        let weekday = Calendar.current().component(.weekday, from: self)
+        
+        return (weekday + 7 - Calendar.current().firstWeekday) % 7 + 1
+    }
+    
+    func monthday() -> Int {
+        return Calendar.current().component(.day, from: self)
+    }
+    
+    func weekOfMonth() -> Int {
+        return Calendar.current().component(.weekOfMonth, from: self)
+    }
+    
+    func compareDays(date: Date) -> ComparisonResult {
+        return Calendar.current().compare(self, to: date, toUnitGranularity: .day)
+    }
+    
+    func compareMonths(date: Date) -> ComparisonResult {
+        return Calendar.current().compare(self, to: date, toUnitGranularity: .month)
+    }
     
 }
