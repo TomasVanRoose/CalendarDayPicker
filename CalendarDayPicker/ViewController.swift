@@ -12,7 +12,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let view = MonthViewPicker.init(origin: CGPoint.init(x: 20, y: 20), date: NSDate())
+        
+        //developer
+        view.backgroundColor = UIColor.red().withAlphaComponent(0.6)
+        self.view.addSubview(view)
+    
     }
 
     override func didReceiveMemoryWarning() {
