@@ -24,6 +24,16 @@ extension Date {
         return [ "Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"]
     }
     
+    func localMonth() -> String {
+        
+        let formatter = DateFormatter.init()
+        let months = formatter.monthSymbols
+        
+        let component = Calendar.current().component(.month, from: self)
+        
+        return (months![component - 1] as String).capitalized
+        
+    }
     
     func firstDayOfMonth() -> Date? {
         

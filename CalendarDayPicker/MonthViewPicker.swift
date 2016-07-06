@@ -36,21 +36,29 @@ class MonthViewPicker: UIView {
     
     init(origin: CGPoint, date: Date) {
         
+        var verticalOffset = 0
+        
         let totalWidth = CGFloat(7 * (labelWidth + padding) - padding)
         
         super.init(frame: CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: 200))
         
         // Draw name of the month -> TODO
+        let month = date.localMonth()
         
+        let monthNameLabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: totalWidth, height: 30))
+        monthNameLabel.text = month
+        
+        self.addSubview(monthNameLabel)
+        verticalOffset += Int(monthNameLabel.frame.size.height) + padding
         
         // Draw the names of the day of the week
         let weekdays = Date.weekdays()
         
         for i in 0...weekdays.count-1 {
             
-            self.addSubview(makeStringLabel(text: weekdays[i], origin: CGPoint.init(x: i * (labelWidth + padding), y: 0)))
-        
+            self.addSubview(makeStringLabel(text: weekdays[i], origin: CGPoint.init(x: i * (labelWidth + padding), y: verticalOffset)))
         }
+        verticalOffset += labelHeight + padding
         
         // Get first day of the month
         let firstDayOfMonth = date.firstDayOfMonth()!
@@ -61,12 +69,15 @@ class MonthViewPicker: UIView {
         var offset = 0
         if day.weekOfMonth() == 0 { offset = 1 }
         
+        // Variable to remember the furthest y position to calculate total height of monthview
+        var y = 0
+        
         while day.compareMonths(date: firstDayOfMonth) == ComparisonResult.orderedSame {
             
             // Weekday range is 1...7, because we want to start the x-coordinate at 0, we subtract
             let x = (day.weekday() - 1) * (labelWidth + padding)
             // Use offset so first week starts at 0
-            let y = (day.weekOfMonth() - 1 + offset) * labelHeight
+            y = verticalOffset + (day.weekOfMonth() - 1 + offset) * labelHeight
             
             let origin = CGPoint.init(x: x, y: y)
             let label = makeDayLabel(number: day.monthday(), origin: origin)
@@ -76,6 +87,7 @@ class MonthViewPicker: UIView {
             day = day.nextDay()
         }
        
+        self.frame = CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: CGFloat(y + labelHeight))
         
     }
     
