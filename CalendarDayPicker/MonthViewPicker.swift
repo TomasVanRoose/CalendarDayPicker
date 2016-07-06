@@ -8,23 +8,54 @@
 
 import UIKit
 
+// MonthViewPickerDelegate
+// Notifies when date was selected
+protocol MonthViewPickerDelegate: class {
+    func didSelectDate(date: NSDate)
+}
+
+
 class MonthViewPicker: UIView {
 
     let labelHeight = 25
     let labelWidth = 25
     let padding = 5
     
-    init(origin: CGPoint, date: NSDate) {
+    weak var delegate : MonthViewPickerDelegate?
+    
+    
+    /* Public Functions */
+    
+    func selectDate(date: NSDate) -> Bool {
+        
+        // TODO //
+        
+        return false
+    }
+    
+    
+    init(origin: CGPoint, date: Date) {
         
         let totalWidth = CGFloat(7 * (labelWidth + padding) - padding)
         
         super.init(frame: CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: 100))
         
-        let weekdays = NSDate.weekdays()
+        // Draw name of the month -> TODO
+        
+        
+        // Draw the names of the day of the week
+        let weekdays = Date.weekdays()
         
         for i in 0...weekdays.count-1 {
-            self.addSubview(makeLabel(text: weekdays[i], origin: CGPoint.init(x: i * (labelWidth + 5), y: 0)))
+            
+            self.addSubview(makeStringLabel(text: weekdays[i], origin: CGPoint.init(x: i * (labelWidth + padding), y: 0)))
+        
         }
+        
+        // Get first day of the month
+        
+        // See what weekday it is on
+        
        
         
     }
@@ -36,16 +67,20 @@ class MonthViewPicker: UIView {
 
     
     
-    func makeLabel(text: String, origin: CGPoint) -> UILabel {
-        
+    func makeStringLabel(text: String, origin: CGPoint) -> UILabel {
         
         let label = UILabel.init(frame: CGRect.init(x: origin.x, y: origin.y, width: CGFloat(labelWidth), height: CGFloat(labelHeight)));
-        
+    
         label.text = text
         label.textAlignment = .center
 
         return label
-        
     }
+    
+    //func makeDayLabel(number: Int, origin: CGPoint) -> UILabel {
+        
+        
+        
+    //}
 
 }

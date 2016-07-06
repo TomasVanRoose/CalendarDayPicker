@@ -9,6 +9,7 @@
 import Foundation
 
 internal extension DateComponents {
+    
     mutating func to12pm() {
         self.hour = 12
         self.minute = 0
@@ -24,10 +25,14 @@ extension Date {
     }
     
     
-    func firstDayOfMonth() -> NSDate? {
+    func firstDayOfMonth() -> Date? {
+        
         guard
             let cal: Calendar = Calendar.current(),
-            var comp: DateComponents = cal.components([.year, .month], from: self) else {return nil}
+            var comp: DateComponents = cal.components([.year, .month], from: self)
+            else {
+                return nil
+        }
         
         comp.to12pm()
         
