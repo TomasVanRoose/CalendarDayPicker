@@ -14,6 +14,11 @@
 		C33DC71A1D2BC32200A524B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C33DC7181D2BC32200A524B0 /* LaunchScreen.storyboard */; };
 		C33DC7251D2BC32200A524B0 /* CalendarDayPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DC7241D2BC32200A524B0 /* CalendarDayPickerTests.swift */; };
 		C33DC7301D2BC32200A524B0 /* CalendarDayPickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33DC72F1D2BC32200A524B0 /* CalendarDayPickerUITests.swift */; };
+		C3EA83E31D2BC77300C1518D /* MonthViewPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA83E21D2BC77300C1518D /* MonthViewPicker.swift */; };
+		C3EA83E41D2BC77300C1518D /* MonthViewPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA83E21D2BC77300C1518D /* MonthViewPicker.swift */; };
+		C3EA83E51D2BC77300C1518D /* MonthViewPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA83E21D2BC77300C1518D /* MonthViewPicker.swift */; };
+		C3EA83E71D2BC91B00C1518D /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA83E61D2BC91B00C1518D /* DateExtension.swift */; };
+		C3EA83E81D2BC91B00C1518D /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EA83E61D2BC91B00C1518D /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,8 @@
 		C33DC72B1D2BC32200A524B0 /* CalendarDayPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarDayPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33DC72F1D2BC32200A524B0 /* CalendarDayPickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayPickerUITests.swift; sourceTree = "<group>"; };
 		C33DC7311D2BC32200A524B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3EA83E21D2BC77300C1518D /* MonthViewPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewPicker.swift; sourceTree = "<group>"; };
+		C3EA83E61D2BC91B00C1518D /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +106,8 @@
 			children = (
 				C33DC70F1D2BC32200A524B0 /* AppDelegate.swift */,
 				C33DC7111D2BC32200A524B0 /* ViewController.swift */,
+				C3EA83E21D2BC77300C1518D /* MonthViewPicker.swift */,
+				C3EA83E61D2BC91B00C1518D /* DateExtension.swift */,
 				C33DC7131D2BC32200A524B0 /* Main.storyboard */,
 				C33DC7161D2BC32200A524B0 /* Assets.xcassets */,
 				C33DC7181D2BC32200A524B0 /* LaunchScreen.storyboard */,
@@ -188,7 +197,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Tomas Van Roose";
 				TargetAttributes = {
 					C33DC70B1D2BC32100A524B0 = {
@@ -260,6 +269,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3EA83E31D2BC77300C1518D /* MonthViewPicker.swift in Sources */,
+				C3EA83E71D2BC91B00C1518D /* DateExtension.swift in Sources */,
 				C33DC7121D2BC32200A524B0 /* ViewController.swift in Sources */,
 				C33DC7101D2BC32200A524B0 /* AppDelegate.swift in Sources */,
 			);
@@ -270,6 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33DC7251D2BC32200A524B0 /* CalendarDayPickerTests.swift in Sources */,
+				C3EA83E81D2BC91B00C1518D /* DateExtension.swift in Sources */,
+				C3EA83E41D2BC77300C1518D /* MonthViewPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33DC7301D2BC32200A524B0 /* CalendarDayPickerUITests.swift in Sources */,
+				C3EA83E51D2BC77300C1518D /* MonthViewPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +440,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -452,6 +467,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPickerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalendarDayPicker.app/CalendarDayPicker";
 			};
@@ -477,6 +493,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tvr.CalendarDayPickerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CalendarDayPicker;
 				USES_XCTRUNNER = YES;
