@@ -8,24 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MonthViewPickerDelegate {
 
+    
+    var monthView: MonthViewPicker? = nil
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let firstview = MonthViewPicker.init(origin: CGPoint.init(x: 20, y:20), date: Date())
+        monthView = MonthViewPicker.init(origin: CGPoint.init(x: 20, y:20), date: Date())
+        monthView!.delegate = self
         
-        let view = MonthViewPicker.init(origin: CGPoint.init(x: firstview.bounds.size.width + 50, y: 20), date: Date.init(timeInterval: 60*60*24*31, since: Date()))
+        let view = MonthViewPicker.init(origin: CGPoint.init(x: monthView!.bounds.size.width + 50, y: 20), date: Date.init(timeInterval: 60*60*24*31, since: Date()))
         
         //developer
-        self.view.addSubview(firstview)
+        self.view.addSubview(monthView!)
         self.view.addSubview(view)
+        
     
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func didSelectDate(date: Date) {
+        monthView!.selectDate(date: date, color: UIColor.red())
     }
 
 

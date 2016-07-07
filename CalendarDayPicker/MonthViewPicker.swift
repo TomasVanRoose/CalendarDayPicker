@@ -29,9 +29,20 @@ class MonthViewPicker: UIView {
     
     /* Public Functions */
     
-    func selectDate(date: Date) -> Bool {
+    func selectDate(date: Date, color: UIColor) -> Bool {
         
-        // TODO //
+        let calendar = Calendar.current()
+        let components = calendar.components([.month, .year, .day], from: date)
+        
+        if (components.year == year && components.month == month) {
+            
+            let label = viewWithTag(components.day!) as! UILabel
+            
+            label.textColor = color
+            
+            return true
+            
+        }
         
         return false
     }
@@ -43,7 +54,7 @@ class MonthViewPicker: UIView {
         
         let totalWidth = CGFloat(7 * (labelWidth + padding) - padding)
         
-        super.init(frame: CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: 200))
+        super.init(frame: CGRect.init(x: origin.x, y: origin.y, width: totalWidth, height: 0))
         
         month = date.month()
         year = date.year()
@@ -111,7 +122,7 @@ class MonthViewPicker: UIView {
         
         let date = calendar.date(from: components)!
         
-        delegate!.didSelectDate(date: date)
+        delegate?.didSelectDate(date: date)
         
         print(date)
         
@@ -137,6 +148,7 @@ class MonthViewPicker: UIView {
         label.text = String(number)
         label.tag = number
         label.textAlignment = .center
+        label.isUserInteractionEnabled = true
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(MonthViewPicker.labelTapped(sender:)))
         label.addGestureRecognizer(gesture)
