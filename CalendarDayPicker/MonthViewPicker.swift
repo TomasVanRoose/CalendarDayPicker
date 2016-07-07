@@ -17,12 +17,12 @@ protocol MonthViewPickerDelegate: class {
 
 class MonthViewPicker: UIView {
 
-    let labelHeight = 25
-    let labelWidth = 25
-    let padding = 8
+    internal let labelHeight = 25
+    internal let labelWidth = 25
+    internal let padding = 8
     
-    var month = 0
-    var year = 0
+    internal var month = 0
+    internal var year = 0
     
     weak var delegate : MonthViewPickerDelegate?
     
@@ -109,7 +109,7 @@ class MonthViewPicker: UIView {
     }
 
     
-    func labelTapped(sender: UITapGestureRecognizer) {
+    @objc private func labelTapped(sender: UITapGestureRecognizer) {
         let tag = sender.view!.tag
         
         let calendar = Calendar.current()
@@ -124,13 +124,11 @@ class MonthViewPicker: UIView {
         
         delegate?.didSelectDate(date: date)
         
-        print(date)
-        
     }
 
     
     // Factory for the labels of the names of the weekdays
-    func makeStringLabel(text: String, origin: CGPoint) -> UILabel {
+    private func makeStringLabel(text: String, origin: CGPoint) -> UILabel {
         
         let label = UILabel.init(frame: CGRect.init(x: origin.x, y: origin.y, width: CGFloat(labelWidth), height: CGFloat(labelHeight)))
     
@@ -141,7 +139,7 @@ class MonthViewPicker: UIView {
     }
     
     // Factory for the labels of the weekdays
-    func makeDayLabel(number: Int, origin: CGPoint) -> UILabel {
+    private func makeDayLabel(number: Int, origin: CGPoint) -> UILabel {
         
         let label = UILabel.init(frame: CGRect.init(x: origin.x, y: origin.y, width: CGFloat(labelWidth), height: CGFloat(labelHeight)))
         
