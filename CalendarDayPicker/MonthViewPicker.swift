@@ -11,7 +11,7 @@ import UIKit
 // MonthViewPickerDelegate
 // Notifies when date was selected
 protocol MonthViewPickerDelegate: class {
-    func didSelectDate(date: Date)
+    func didSelectDate(date: Date, color: UIColor, picker: MonthViewPicker)
 }
 
 
@@ -26,6 +26,8 @@ class MonthViewPicker: UIView {
     
     internal var month = 0
     internal var year = 0
+    
+    let firstDay: Date
     
     weak var delegate : MonthViewPickerDelegate?
     
@@ -55,6 +57,7 @@ class MonthViewPicker: UIView {
         
         var verticalOffset = 0
         
+        firstDay = date.firstDayOfMonth()!
         
         super.init(frame: CGRect.init(x: origin.x, y: origin.y, width: CGFloat(MonthViewPicker.totalWidth), height: 0))
         
@@ -79,10 +82,7 @@ class MonthViewPicker: UIView {
         }
         verticalOffset += MonthViewPicker.labelHeight + MonthViewPicker.padding
         
-        // Get first day of the month
-        let firstDayOfMonth = date.firstDayOfMonth()!
-        
-        var day = firstDayOfMonth
+        var day = firstDay
         
         // If first day of the month is not on a monday then weekofthemonth equals 0, but for placement we want all firsts to be in week 1
         var offset = 0
@@ -91,7 +91,7 @@ class MonthViewPicker: UIView {
         // Variable to remember the furthest y position to calculate total height of monthview
         var y = 0
         
-        while day.compareMonths(date: firstDayOfMonth) == ComparisonResult.orderedSame {
+        while day.compareMonths(date: firstDay) == ComparisonResult.orderedSame {
             
             // Weekday range is 1...7, because we want to start the x-coordinate at 0, we subtract
             let x = (day.weekday() - 1) * (MonthViewPicker.labelWidth + MonthViewPicker.padding)
@@ -113,11 +113,11 @@ class MonthViewPicker: UIView {
 
     
     @objc private func labelTapped(sender: UITapGestureRecognizer) {
-        let tag = sender.view!.tag
-        
+        let label = sender.view as! UILabel
+    
         let calendar = Calendar.current()
         var components = DateComponents()
-        components.day = tag
+        components.day = label.tag
         components.month = month
         components.year = year
         
@@ -125,7 +125,7 @@ class MonthViewPicker: UIView {
         
         let date = calendar.date(from: components)!
         
-        delegate?.didSelectDate(date: date)
+        delegate?.didSelectDate(date: date, color: label.textColor, picker: self)
         
     }
 

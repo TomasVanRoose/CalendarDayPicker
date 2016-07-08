@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SeasonViewPickerDelegate {
 
     
     var monthView: MonthViewPicker? = nil
@@ -20,6 +20,7 @@ class ViewController: UIViewController {
 
         let season = SeasonViewPicker.init(frame: CGRect(x: 20, y: 20, width: self.view.frame.size.width, height: self.view.frame.size.height), beginDate: Date(), endDate: Date(timeInterval: 60*60*24*30*10, since: Date()))
         
+        season.delegate = self
         self.view.addSubview(season)
     
     }
@@ -29,6 +30,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func didSelectDate(date: Date, color: UIColor, picker: SeasonViewPicker) {
+        
+        if color.isEqual(UIColor.green()) {
+            _ = picker.selectDate(date: date, color: UIColor.black())
+        } else  {
+            _ = picker.selectDate(date: date, color: UIColor.green())
+        }
+    }
 
 
 

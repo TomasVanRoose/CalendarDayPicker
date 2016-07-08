@@ -8,17 +8,49 @@
 
 import UIKit
 
+protocol SeasonViewPickerDelegate: class {
+    func didSelectDate(date: Date, color: UIColor, picker: SeasonViewPicker)
+}
+
+
 class SeasonViewPicker: UIView, MonthViewPickerDelegate {
 
     
     internal let padding = 20
+    internal let beginDate: Date
+    internal let endDate: Date
     
-    func didSelectDate(date: Date) {
-        // TODO
+    var monthViews = [MonthViewPicker]()
+    
+    weak var delegate : SeasonViewPickerDelegate?
+
+    
+    // Delegate method
+    func didSelectDate(date: Date, color: UIColor, picker: MonthViewPicker) {
+        delegate?.didSelectDate(date: date, color: color, picker: self)
+    }
+    
+    func selectDate(date: Date, color: UIColor) -> Bool {
+        
+        if (date.compareDays(date: beginDate) == ComparisonResult.orderedAscending || date.compareDays(date: endDate) == ComparisonResult.orderedDescending) {
+            return false
+        }
+        
+        for picker in monthViews {
+            
+            if (picker.firstDay.compareMonths(date: date) == ComparisonResult.orderedSame) {
+                return picker.selectDate(date: date, color: color)
+            }
+        }
+        
+        return false
     }
     
     
     init(frame: CGRect, beginDate: Date, endDate: Date) {
+        
+        self.beginDate = beginDate
+        self.endDate = endDate
         
         super.init(frame: frame)
         
@@ -57,10 +89,16 @@ class SeasonViewPicker: UIView, MonthViewPickerDelegate {
                 maxHeightOfCurrentRow = 0
             }
             
+            monthView.delegate = self
+            
             self.addSubview(monthView)
+            monthViews.append(monthView)
             currentDate = currentDate.nextMonth()
             
         }
+        
+        _ = selectDate(date: beginDate, color: UIColor.red())
+        _ = selectDate(date: endDate, color: UIColor.red())
         
     }
     
