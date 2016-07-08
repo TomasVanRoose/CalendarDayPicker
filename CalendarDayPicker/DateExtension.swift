@@ -59,6 +59,14 @@ extension Date {
         
     }
     
+    func nextMonth() -> Date {
+        var monthComponent = DateComponents.init()
+        monthComponent.month = 1
+        let calendar = Calendar.current()
+        
+        return calendar.date(byAdding: monthComponent, to: self, options: Calendar.Options(rawValue: UInt(0)))!
+    }
+    
     func year() -> Int {
         return Calendar.current().component(.year, from: self)
     }

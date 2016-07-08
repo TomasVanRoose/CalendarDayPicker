@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, MonthViewPickerDelegate {
+class ViewController: UIViewController {
 
     
     var monthView: MonthViewPicker? = nil
@@ -18,15 +18,9 @@ class ViewController: UIViewController, MonthViewPickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        monthView = MonthViewPicker.init(origin: CGPoint.init(x: 20, y:20), date: Date())
-        monthView!.delegate = self
+        let season = SeasonViewPicker.init(frame: CGRect(x: 20, y: 20, width: self.view.frame.size.width, height: self.view.frame.size.height), beginDate: Date(), endDate: Date(timeInterval: 60*60*24*30*10, since: Date()))
         
-        let view = MonthViewPicker.init(origin: CGPoint.init(x: monthView!.bounds.size.width + 50, y: 20), date: Date.init(timeInterval: 60*60*24*31, since: Date()))
-        
-        //developer
-        self.view.addSubview(monthView!)
-        self.view.addSubview(view)
-        
+        self.view.addSubview(season)
     
     }
 
@@ -35,9 +29,7 @@ class ViewController: UIViewController, MonthViewPickerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func didSelectDate(date: Date) {
-        monthView!.selectDate(date: date, color: UIColor.red())
-    }
+
 
 
 }
