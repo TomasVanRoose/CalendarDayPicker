@@ -25,17 +25,19 @@ class SeasonViewPicker: UIView, MonthViewPickerDelegate {
     weak var delegate : SeasonViewPickerDelegate?
 
     
-    // Delegate method
+    // MARK: Delegate methods
+    
     func didSelectDate(date: Date, color: UIColor, picker: MonthViewPicker) {
         delegate?.didSelectDate(date: date, color: color, picker: self)
     }
+    
+    // MARK: Public functions
     
     func selectDate(date: Date, color: UIColor) -> Bool {
         
         if (date.compareDays(date: beginDate) == ComparisonResult.orderedAscending || date.compareDays(date: endDate) == ComparisonResult.orderedDescending) {
             return false
         }
-        
         for picker in monthViews {
             
             if (picker.firstDay.compareMonths(date: date) == ComparisonResult.orderedSame) {
@@ -46,6 +48,24 @@ class SeasonViewPicker: UIView, MonthViewPickerDelegate {
         return false
     }
     
+    func selectSubsequentDates(forDate: Date, andComponent: DateComponents, color: UIColor) -> Bool {
+        
+        var currentDate = forDate
+        let cal = Calendar.current()
+        
+        while currentDate.compareDays(date: endDate) == ComparisonResult.orderedAscending ||
+            currentDate.compareDays(date: endDate) == ComparisonResult.orderedSame {
+            
+                if selectDate(date: currentDate, color: color) == false {
+                    return false;
+                }
+            currentDate = cal.date(byAdding: andComponent, to: currentDate, options: Calendar.Options(rawValue: 0))!
+        }
+        
+        return true;
+    }
+    
+    // MARK: Initialization functions
     
     init(frame: CGRect, beginDate: Date, endDate: Date) {
         

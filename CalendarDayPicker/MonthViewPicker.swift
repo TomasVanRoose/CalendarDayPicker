@@ -32,7 +32,7 @@ class MonthViewPicker: UIView {
     weak var delegate : MonthViewPickerDelegate?
     
     
-    /* Public Functions */
+    // MARK: Public Functions
     
     func selectDate(date: Date, color: UIColor) -> Bool {
         
@@ -52,6 +52,7 @@ class MonthViewPicker: UIView {
         return false
     }
     
+    // MARK: Initialization methods
     
     init(origin: CGPoint, date: Date) {
         

@@ -32,10 +32,12 @@ class ViewController: UIViewController, SeasonViewPickerDelegate {
     
     func didSelectDate(date: Date, color: UIColor, picker: SeasonViewPicker) {
         
-        if color.isEqual(UIColor.green()) {
+        if !color.isEqual(UIColor.black()) {
             _ = picker.selectDate(date: date, color: UIColor.black())
         } else  {
-            _ = picker.selectDate(date: date, color: UIColor.green())
+            var component = DateComponents()
+            component.day = 14
+            _ = picker.selectSubsequentDates(forDate: date, andComponent: component, color: UIColor.green())
         }
     }
 
