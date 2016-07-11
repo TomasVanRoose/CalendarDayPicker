@@ -110,8 +110,8 @@
 			children = (
 				C33DC70F1D2BC32200A524B0 /* AppDelegate.swift */,
 				C33DC7111D2BC32200A524B0 /* ViewController.swift */,
-				C3EA83E21D2BC77300C1518D /* MonthViewPicker.swift */,
 				C346E33F1D2E93C80081C8DC /* SeasonViewPicker.swift */,
+				C3EA83E21D2BC77300C1518D /* MonthViewPicker.swift */,
 				C3EA83E61D2BC91B00C1518D /* DateExtension.swift */,
 				C33DC7131D2BC32200A524B0 /* Main.storyboard */,
 				C33DC7161D2BC32200A524B0 /* Assets.xcassets */,

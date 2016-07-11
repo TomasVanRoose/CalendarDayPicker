@@ -8,12 +8,6 @@
 
 import UIKit
 
-// MonthViewPickerDelegate
-// Notifies when date was selected
-protocol MonthViewPickerDelegate: class {
-    func didSelectDate(date: Date, color: UIColor, picker: MonthViewPicker)
-}
-
 
 class MonthViewPicker: UIView {
 
@@ -29,7 +23,8 @@ class MonthViewPicker: UIView {
     
     let firstDay: Date
     
-    weak var delegate : MonthViewPickerDelegate?
+    // Delegation function
+    var didSelectDateFunc: ((Date, UIColor) -> ())?
     
     
     // MARK: Public Functions
@@ -54,9 +49,10 @@ class MonthViewPicker: UIView {
     
     // MARK: Initialization methods
     
-    init(origin: CGPoint, date: Date) {
+    init(origin: CGPoint, date: Date, dateSelectedFunc: ((Date, UIColor) -> ())?) {
         
         var verticalOffset = 0
+        didSelectDateFunc = dateSelectedFunc
         
         firstDay = date.firstDayOfMonth()!
         
@@ -114,19 +110,23 @@ class MonthViewPicker: UIView {
 
     
     @objc private func labelTapped(sender: UITapGestureRecognizer) {
-        let label = sender.view as! UILabel
-    
-        let calendar = Calendar.current()
-        var components = DateComponents()
-        components.day = label.tag
-        components.month = month
-        components.year = year
         
-        components.to12pm()
-        
-        let date = calendar.date(from: components)!
-        
-        delegate?.didSelectDate(date: date, color: label.textColor, picker: self)
+        if let dateFunc = didSelectDateFunc {
+            
+            let label = sender.view as! UILabel
+            
+            let calendar = Calendar.current()
+            var components = DateComponents()
+            components.day = label.tag
+            components.month = month
+            components.year = year
+            
+            components.to12pm()
+            
+            let date = calendar.date(from: components)!
+            
+            dateFunc(date, label.textColor)
+        }
         
     }
 

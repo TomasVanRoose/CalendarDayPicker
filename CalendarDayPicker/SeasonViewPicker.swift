@@ -8,12 +8,8 @@
 
 import UIKit
 
-protocol SeasonViewPickerDelegate: class {
-    func didSelectDate(date: Date, color: UIColor, picker: SeasonViewPicker)
-}
 
-
-class SeasonViewPicker: UIView, MonthViewPickerDelegate {
+class SeasonViewPicker: UIView {
 
     
     internal let padding = 20
@@ -22,14 +18,8 @@ class SeasonViewPicker: UIView, MonthViewPickerDelegate {
     
     var monthViews = [MonthViewPicker]()
     
-    weak var delegate : SeasonViewPickerDelegate?
-
+    var didSelectDateFunc: ((Date, UIColor, SeasonViewPicker) -> ())?
     
-    // MARK: Delegate methods
-    
-    func didSelectDate(date: Date, color: UIColor, picker: MonthViewPicker) {
-        delegate?.didSelectDate(date: date, color: color, picker: self)
-    }
     
     // MARK: Public functions
     
@@ -67,10 +57,12 @@ class SeasonViewPicker: UIView, MonthViewPickerDelegate {
     
     // MARK: Initialization functions
     
-    init(frame: CGRect, beginDate: Date, endDate: Date) {
+    init(frame: CGRect, beginDate: Date, endDate: Date, dateFunc: ((Date, UIColor, SeasonViewPicker) ->())?) {
         
         self.beginDate = beginDate
         self.endDate = endDate
+        
+        self.didSelectDateFunc = dateFunc
         
         super.init(frame: frame)
         
@@ -93,7 +85,13 @@ class SeasonViewPicker: UIView, MonthViewPickerDelegate {
             
             let origin = CGPoint(x: column * (monthViewWidth + padding), y: rowHeight)
             
-            let monthView = MonthViewPicker.init(origin: origin, date: currentDate)
+            let monthView = MonthViewPicker.init(origin: origin, date: currentDate) {[ unowned me = self] date, color in
+                // delegate the selection to creator of this view
+                if let dateFunc = me.didSelectDateFunc {
+                    dateFunc(date, color, me)
+                }
+                
+            }
             
             // Change maxheightofcurrentrow
             if (Int(monthView.frame.size.height) > maxHeightOfCurrentRow) {
@@ -108,8 +106,6 @@ class SeasonViewPicker: UIView, MonthViewPickerDelegate {
                 rowHeight += maxHeightOfCurrentRow + padding
                 maxHeightOfCurrentRow = 0
             }
-            
-            monthView.delegate = self
             
             self.addSubview(monthView)
             monthViews.append(monthView)
