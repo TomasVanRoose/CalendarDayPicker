@@ -66,6 +66,11 @@ class SeasonViewPicker: UIView {
         
         super.init(frame: frame)
         
+        // Init scrollview
+        let scrollView = UIScrollView(frame: frame)
+        scrollView.alwaysBounceHorizontal = false
+        addSubview(scrollView)
+        
         let monthViewWidth = Int(MonthViewPicker.totalWidth)
         
         let amountPerRow = Int(frame.size.width) / (monthViewWidth + padding)
@@ -107,7 +112,7 @@ class SeasonViewPicker: UIView {
                 maxHeightOfCurrentRow = 0
             }
             
-            self.addSubview(monthView)
+            scrollView.addSubview(monthView)
             monthViews.append(monthView)
             currentDate = currentDate.nextMonth()
             
@@ -115,6 +120,10 @@ class SeasonViewPicker: UIView {
         
         _ = selectDate(date: beginDate, color: UIColor.red())
         _ = selectDate(date: endDate, color: UIColor.red())
+        
+        scrollView.contentSize = CGSize(width: frame.size.width, height: CGFloat(rowHeight + maxHeightOfCurrentRow))
+        
+        
         
     }
     

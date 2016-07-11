@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let season = SeasonViewPicker.init(frame: CGRect(x: 20, y: 20, width: self.view.frame.size.width, height: self.view.frame.size.height), beginDate: Date(), endDate: Date(timeInterval: 60*60*24*30*10, since: Date())) { date, color, seasonPicker in
+        let season = SeasonViewPicker.init(frame: CGRect(x: 20, y: 20, width: self.view.frame.size.width, height: 500), beginDate: Date(), endDate: Date(timeInterval: 60*60*24*30*10, since: Date())) { date, color, seasonPicker in
             
             var component = DateComponents()
             component.weekOfYear = 2
