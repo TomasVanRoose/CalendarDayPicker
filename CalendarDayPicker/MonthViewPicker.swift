@@ -153,7 +153,7 @@ class MonthViewPicker: UIView {
         label.textAlignment = .Center
         label.userInteractionEnabled = true
         
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(MonthViewPicker.labelTapped(sender:)))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(MonthViewPicker.labelTapped(_:)))
         label.addGestureRecognizer(gesture)
         
         return label
