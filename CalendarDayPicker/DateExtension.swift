@@ -8,16 +8,17 @@
 
 import Foundation
 
-internal extension DateComponents {
+internal extension NSDateComponents {
     
-    mutating func to12pm() {
+    func to12pm() -> (NSDateComponents) {
         self.hour = 12
         self.minute = 0
         self.second = 0
+        return self
     }
 }
 
-extension Date {
+extension NSDate {
 
     
     static func weekdays() -> [String] {
@@ -26,75 +27,74 @@ extension Date {
     
     func localMonth() -> String {
         
-        let formatter = DateFormatter.init()
+        let formatter = NSDateFormatter.init()
         let months = formatter.monthSymbols
+        let component = NSCalendar.currentCalendar().component(.Month, fromDate: self)
         
-        let component = Calendar.current().component(.month, from: self)
-        
-        return (months![component - 1] as String).capitalized
+        return (months![component - 1] as String).capitalizedString
         
     }
     
-    func firstDayOfMonth() -> Date? {
+    func firstDayOfMonth() -> NSDate? {
         
         guard
-            let cal: Calendar = Calendar.current(),
-            var comp: DateComponents = cal.components([.year, .month], from: self)
+            let cal: NSCalendar = NSCalendar.currentCalendar(),
+            var comp: NSDateComponents = cal.components([.Year, .Month], fromDate: self)
             else {
                 return nil
         }
         
-        comp.to12pm()
+        comp = comp.to12pm()
         
-        return cal.date(from: comp)!
+        return cal.dateFromComponents(comp)!
     }
     
-    func nextDay() -> Date {
+    func nextDay() -> NSDate {
         
-        var dayComponent = DateComponents.init()
+        let dayComponent = NSDateComponents.init()
         dayComponent.day = 1;
-        let calendar = Calendar.current()
+        let calendar = NSCalendar.currentCalendar()
         
-        return calendar.date(byAdding: dayComponent, to: self, options: Calendar.Options(rawValue: UInt(0)))!
+        return calendar.dateByAddingComponents(dayComponent, toDate: self, options: NSCalendarOptions.init(rawValue: UInt(0)))!
         
     }
     
-    func nextMonth() -> Date {
-        var monthComponent = DateComponents.init()
+    func nextMonth() -> NSDate {
+        let monthComponent = NSDateComponents.init()
         monthComponent.month = 1
-        let calendar = Calendar.current()
+        let calendar = NSCalendar.currentCalendar()
         
-        return calendar.date(byAdding: monthComponent, to: self, options: Calendar.Options(rawValue: UInt(0)))!
+        return calendar.dateByAddingComponents(monthComponent, toDate: self, options: NSCalendarOptions.init(rawValue: UInt(0)))!
     }
     
     func year() -> Int {
-        return Calendar.current().component(.year, from: self)
+        return NSCalendar.currentCalendar().component(.Year, fromDate: self)
     }
     
     func month() -> Int {
-        return Calendar.current().component(.month, from: self)
+        return NSCalendar.currentCalendar().component(.Month, fromDate: self)
     }
     
     func weekday() -> Int {
-        let weekday = Calendar.current().component(.weekday, from: self)
+        let weekday = NSCalendar.currentCalendar().component(.Weekday, fromDate: self)
         
-        return (weekday + 7 - Calendar.current().firstWeekday) % 7 + 1
+        return (weekday + 7 - NSCalendar.currentCalendar().firstWeekday) % 7 + 1
     }
     
     func monthday() -> Int {
-        return Calendar.current().component(.day, from: self)
+        return NSCalendar.currentCalendar().component(.Day, fromDate: self)
     }
     
     func weekOfMonth() -> Int {
-        return Calendar.current().component(.weekOfMonth, from: self)
+        return NSCalendar.currentCalendar().component(.WeekOfMonth, fromDate: self)
     }
     
-    func compareDays(date: Date) -> ComparisonResult {
-        return Calendar.current().compare(self, to: date, toUnitGranularity: .day)
+    func compareDays(date: NSDate) -> NSComparisonResult {
+        return NSCalendar.currentCalendar().compareDate(self, toDate: date, toUnitGranularity: .Day)
     }
     
-    func compareMonths(date: Date) -> ComparisonResult {
-        return Calendar.current().compare(self, to: date, toUnitGranularity: .month)
+    func compareMonths(date: NSDate) -> NSComparisonResult {
+        return NSCalendar.currentCalendar().compareDate(self, toDate: date, toUnitGranularity: .Month)
     }
     
 }

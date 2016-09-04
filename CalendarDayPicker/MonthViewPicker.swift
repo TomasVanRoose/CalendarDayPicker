@@ -21,22 +21,22 @@ class MonthViewPicker: UIView {
     internal var month = 0
     internal var year = 0
     
-    let firstDay: Date
+    let firstDay: NSDate
     
     // Delegation function
-    var didSelectDateFunc: ((Date, UIColor) -> ())?
+    var didSelectDateFunc: ((NSDate, UIColor) -> ())?
     
     
     // MARK: Public Functions
     
-    func selectDate(date: Date, color: UIColor) -> Bool {
+    func selectDate(date: NSDate, color: UIColor) -> Bool {
         
-        let calendar = Calendar.current()
-        let components = calendar.components([.month, .year, .day], from: date)
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Month, .Year, .Day], fromDate: date)
         
         if (components.year == year && components.month == month) {
             
-            let label = viewWithTag(components.day!) as! UILabel
+            let label = viewWithTag(components.day) as! UILabel
             
             label.textColor = color
             
@@ -49,7 +49,7 @@ class MonthViewPicker: UIView {
     
     // MARK: Initialization methods
     
-    init(origin: CGPoint, date: Date, dateSelectedFunc: ((Date, UIColor) -> ())?) {
+    init(origin: CGPoint, date: NSDate, dateSelectedFunc: ((NSDate, UIColor) -> ())?) {
         
         var verticalOffset = 0
         didSelectDateFunc = dateSelectedFunc
@@ -71,11 +71,11 @@ class MonthViewPicker: UIView {
         verticalOffset += Int(monthNameLabel.frame.size.height) + MonthViewPicker.padding
         
         // Draw the names of the day of the week
-        let weekdays = Date.weekdays()
+        let weekdays = NSDate.weekdays()
         
         for i in 0...weekdays.count-1 {
             
-            self.addSubview(makeStringLabel(text: weekdays[i], origin: CGPoint.init(x: i * (MonthViewPicker.labelWidth + MonthViewPicker.padding), y: verticalOffset)))
+            self.addSubview(makeStringLabel(weekdays[i], origin: CGPoint.init(x: i * (MonthViewPicker.labelWidth + MonthViewPicker.padding), y: verticalOffset)))
         }
         verticalOffset += MonthViewPicker.labelHeight + MonthViewPicker.padding
         
@@ -88,7 +88,7 @@ class MonthViewPicker: UIView {
         // Variable to remember the furthest y position to calculate total height of monthview
         var y = 0
         
-        while day.compareMonths(date: firstDay) == ComparisonResult.orderedSame {
+        while day.compareMonths(firstDay) == NSComparisonResult.OrderedSame {
             
             // Weekday range is 1...7, because we want to start the x-coordinate at 0, we subtract
             let x = (day.weekday() - 1) * (MonthViewPicker.labelWidth + MonthViewPicker.padding)
@@ -96,7 +96,7 @@ class MonthViewPicker: UIView {
             y = verticalOffset + (day.weekOfMonth() - 1 + offset) * MonthViewPicker.labelHeight
             
             let origin = CGPoint.init(x: x, y: y)
-            let label = makeDayLabel(number: day.monthday(), origin: origin)
+            let label = makeDayLabel(day.monthday(), origin: origin)
             
             self.addSubview(label)
             
@@ -115,15 +115,15 @@ class MonthViewPicker: UIView {
             
             let label = sender.view as! UILabel
             
-            let calendar = Calendar.current()
-            var components = DateComponents()
+            let calendar = NSCalendar.currentCalendar()
+            var components = NSDateComponents()
             components.day = label.tag
             components.month = month
             components.year = year
             
-            components.to12pm()
+            components = components.to12pm()
             
-            let date = calendar.date(from: components)!
+            let date = calendar.dateFromComponents(components)!
             
             dateFunc(date, label.textColor)
         }
@@ -137,8 +137,8 @@ class MonthViewPicker: UIView {
         let label = UILabel.init(frame: CGRect.init(x: origin.x, y: origin.y, width: CGFloat(MonthViewPicker.labelWidth), height: CGFloat(MonthViewPicker.labelHeight)))
     
         label.text = text
-        label.textColor = UIColor.blue()
-        label.textAlignment = .center
+        label.textColor = UIColor.blueColor()
+        label.textAlignment = .Center
 
         return label
     }
@@ -150,8 +150,8 @@ class MonthViewPicker: UIView {
         
         label.text = String(number)
         label.tag = number
-        label.textAlignment = .center
-        label.isUserInteractionEnabled = true
+        label.textAlignment = .Center
+        label.userInteractionEnabled = true
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(MonthViewPicker.labelTapped(sender:)))
         label.addGestureRecognizer(gesture)

@@ -13,43 +13,43 @@ class SeasonViewPicker: UIView {
 
     
     internal let padding = 20
-    internal let beginDate: Date
-    internal let endDate: Date
+    internal let beginDate: NSDate
+    internal let endDate: NSDate
     
     var monthViews = [MonthViewPicker]()
     
-    var didSelectDateFunc: ((Date, UIColor, SeasonViewPicker) -> ())?
+    var didSelectDateFunc: ((NSDate, UIColor, SeasonViewPicker) -> ())?
     
     
     // MARK: Public functions
     
-    func selectDate(date: Date, color: UIColor) -> Bool {
+    func selectDate(date: NSDate, color: UIColor) -> Bool {
         
-        if (date.compareDays(date: beginDate) == ComparisonResult.orderedAscending || date.compareDays(date: endDate) == ComparisonResult.orderedDescending) {
+        if (date.compareDays(beginDate) == NSComparisonResult.OrderedAscending || date.compareDays(endDate) == NSComparisonResult.OrderedDescending) {
             return false
         }
         for picker in monthViews {
             
-            if (picker.firstDay.compareMonths(date: date) == ComparisonResult.orderedSame) {
-                return picker.selectDate(date: date, color: color)
+            if (picker.firstDay.compareMonths(date) == NSComparisonResult.OrderedSame) {
+                return picker.selectDate(date, color: color)
             }
         }
         
         return false
     }
     
-    func selectSubsequentDates(forDate: Date, andComponent: DateComponents, color: UIColor) -> Bool {
+    func selectSubsequentDates(forDate: NSDate, andComponent: NSDateComponents, color: UIColor) -> Bool {
         
         var currentDate = forDate
-        let cal = Calendar.current()
+        let cal = NSCalendar.currentCalendar()
         
-        while currentDate.compareDays(date: endDate) == ComparisonResult.orderedAscending ||
-            currentDate.compareDays(date: endDate) == ComparisonResult.orderedSame {
+        while currentDate.compareDays(endDate) == NSComparisonResult.OrderedAscending ||
+            currentDate.compareDays(endDate) == NSComparisonResult.OrderedSame {
             
-                if selectDate(date: currentDate, color: color) == false {
+                if selectDate(currentDate, color: color) == false {
                     return false;
                 }
-            currentDate = cal.date(byAdding: andComponent, to: currentDate, options: Calendar.Options(rawValue: 0))!
+            currentDate = cal.dateByAddingComponents(andComponent, toDate: currentDate, options: NSCalendarOptions.init(rawValue: UInt(0)))!
         }
         
         return true;
@@ -57,7 +57,7 @@ class SeasonViewPicker: UIView {
     
     // MARK: Initialization functions
     
-    init(frame: CGRect, beginDate: Date, endDate: Date, dateFunc: ((Date, UIColor, SeasonViewPicker) ->())?) {
+    init(frame: CGRect, beginDate: NSDate, endDate: NSDate, dateFunc: ((NSDate, UIColor, SeasonViewPicker) ->())?) {
         
         self.beginDate = beginDate
         self.endDate = endDate
@@ -86,7 +86,7 @@ class SeasonViewPicker: UIView {
         // Keeps track of the highest monthview, that way the next row will all be on the same y
         var maxHeightOfCurrentRow = 0
         
-        while currentDate.compareMonths(date: endDate) == ComparisonResult.orderedAscending || currentDate.compareMonths(date: endDate) == ComparisonResult.orderedSame {
+        while currentDate.compareMonths(endDate) == NSComparisonResult.OrderedAscending || currentDate.compareMonths(endDate) == NSComparisonResult.OrderedSame {
             
             let origin = CGPoint(x: column * (monthViewWidth + padding), y: rowHeight)
             
@@ -118,8 +118,8 @@ class SeasonViewPicker: UIView {
             
         }
         
-        _ = selectDate(date: beginDate, color: UIColor.red())
-        _ = selectDate(date: endDate, color: UIColor.red())
+        _ = selectDate(beginDate, color: UIColor.redColor())
+        _ = selectDate(endDate, color: UIColor.redColor())
         
         scrollView.contentSize = CGSize(width: frame.size.width, height: CGFloat(rowHeight + maxHeightOfCurrentRow))
         
