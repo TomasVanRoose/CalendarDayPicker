@@ -55,6 +55,23 @@ class SeasonViewPicker: UIView {
         return true;
     }
     
+    func deselectAllDatesInColor(color : UIColor) {
+        
+        var currentDate = self.beginDate.nextDay()
+        
+        while currentDate.compareDays(endDate) == NSComparisonResult.OrderedAscending {
+            for picker in monthViews {
+                if let getColor = picker.colorForDate(currentDate) {
+                    if getColor == color {
+                        picker.selectDate(currentDate, color: UIColor.blackColor())
+                        break
+                    }
+                }
+            }
+            currentDate = currentDate.nextDay()
+        }
+    }
+    
     // MARK: Initialization functions
     
     init(frame: CGRect, beginDate: NSDate, endDate: NSDate, dateFunc: ((NSDate, UIColor, SeasonViewPicker) ->())?) {

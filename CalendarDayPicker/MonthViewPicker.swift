@@ -47,6 +47,20 @@ class MonthViewPicker: UIView {
         return false
     }
     
+    func colorForDate(date : NSDate) -> UIColor? {
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Month, .Year, .Day], fromDate: date)
+        
+        if (components.year == year && components.month == month) {
+            
+            let label = viewWithTag(components.day) as! UILabel
+            return label.textColor
+        }
+        
+        return nil
+    }
+    
     // MARK: Initialization methods
     
     init(origin: CGPoint, date: NSDate, dateSelectedFunc: ((NSDate, UIColor) -> ())?) {
