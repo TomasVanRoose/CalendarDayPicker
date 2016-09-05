@@ -97,4 +97,11 @@ extension NSDate {
         return NSCalendar.currentCalendar().compareDate(self, toDate: date, toUnitGranularity: .Month)
     }
     
+    func daysBetween(endDate : NSDate) -> Int {
+        
+        let cal = NSCalendar.currentCalendar()
+        let comp = cal.components(.Day, fromDate: self, toDate: endDate, options: [])
+        return comp.day
+    }
+    
 }
