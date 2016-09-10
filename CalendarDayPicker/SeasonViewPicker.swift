@@ -138,7 +138,7 @@ class SeasonViewPicker: UIView {
         _ = selectDate(beginDate, color: UIColor.redColor())
         _ = selectDate(endDate, color: UIColor.redColor())
         
-        scrollView.contentSize = CGSize(width: frame.size.width, height: CGFloat(rowHeight + maxHeightOfCurrentRow))
+        scrollView.contentSize = CGSize(width: frame.size.width, height: CGFloat(rowHeight + maxHeightOfCurrentRow * 2))
         
         
         
